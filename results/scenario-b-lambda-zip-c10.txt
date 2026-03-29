@@ -1,0 +1,45 @@
+=== lambda-zip | concurrency=10 | 500 requests ===
+Summary:
+  Success rate:	100.00%
+  Total:	4848.6098 ms
+  Slowest:	678.6778 ms
+  Fastest:	66.3902 ms
+  Average:	96.0527 ms
+  Requests/sec:	103.1223
+
+  Total data:	185.49 KiB
+  Size/request:	379 B
+  Size/sec:	38.25 KiB
+
+Response time histogram:
+   66.390 ms [1]   |
+  127.619 ms [496] |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  188.848 ms [2]   |
+  250.076 ms [0]   |
+  311.305 ms [0]   |
+  372.534 ms [0]   |
+  433.763 ms [0]   |
+  494.992 ms [0]   |
+  556.220 ms [0]   |
+  617.449 ms [0]   |
+  678.678 ms [1]   |
+
+Response time distribution:
+  10.00% in 83.0185 ms
+  25.00% in 87.8628 ms
+  50.00% in 94.6856 ms
+  75.00% in 100.8084 ms
+  90.00% in 107.6854 ms
+  95.00% in 113.2158 ms
+  99.00% in 123.7105 ms
+  99.90% in 678.6778 ms
+  99.99% in 678.6778 ms
+
+
+Details (average, fastest, slowest):
+  DNS+dialup:	28.8104 ms, 28.1971 ms, 29.3292 ms
+  DNS-lookup:	0.0091 ms, 0.0049 ms, 0.0427 ms
+
+Status code distribution:
+  [200] 500 responses
+
