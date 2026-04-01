@@ -1,0 +1,33 @@
+bash 01 ECR
+
+[
+    "latest"
+]
+
+bash 02 - LAMBDA ZIP
+{
+    "StatusCode": 200,
+    "ExecutedVersion": "$LATEST"
+}
+[ec2-user@ip-172-31-65-91 lsc-lab4-aws-cloud-r2-niezgodam]$ cat /tmp/out.json
+{"statusCode": 200, "headers": {"Content-Type": "application/json", "X-Server-Time-Ms": "79.417", "X-Instance-Id": "2026/03/29/[$LATEST]c6a09a75407347dd956bde09e2ff4bf5", "X-Cold-Start": "true"}, "body": "{\"results\": [{\"index\": 35859, \"distance\": 12.001459121704102}, {\"index\": 24682, \"distance\": 12.059946060180664}, {\"index\": 35397, \"distance\": 12.487079620361328}, {\"index\": 20160, \"distance\": 12.489519119262695}, {\"index\": 30454, \"distance\": 12.499402046203613}], \"query_time_ms\": 79.417, \"instance_id\": \"2026/03/29/[$LATEST]c6a09a75407347dd956bde09e2ff4bf5\", \"cold_start\": true}"}
+
+bash 03 LAMBDA CONTAINER
+
+{
+    "StatusCode": 200,
+    "ExecutedVersion": "$LATEST"
+}
+[ec2-user@ip-172-31-65-91 lsc-lab4-aws-cloud-r2-niezgodam]$ cat /tmp/out.json
+{"statusCode": 200, "headers": {"Content-Type": "application/json", "X-Server-Time-Ms": "69.251", "X-Instance-Id": "2026/03/29/[$LATEST]0f0baa2d39af4af2b5dea2d002f39a87", "X-Cold-Start": "true"}, "body": "{\"results\": [{\"index\": 35859, \"distance\": 12.001459121704102}, {\"index\": 24682, \"distance\": 12.059946060180664}, {\"index\": 35397, \"distance\": 12.487079620361328}, {\"index\": 20160, \"distance\": 12.489519119262695}, {\"index\": 30454, \"distance\": 12.499402046203613}], \"query_time_ms\": 69.251, \"instance_id\": \"2026/03/29/[$LATEST]0f0baa2d39af4af2b5dea2d002f39a87\", \"cold_start\": true}"}
+
+
+bash 04 FARGATE
+
+{"instance_id":"ip-172-31-48-251.ec2.internal","query_time_ms":23.679,"results":[{"distance":12.001459121704102,"index":35859},{"distance":12.059946060180664,"index":24682},{"distance":12.487079620361328,"index":35397},{"distance":12.489519119262695,"index":20160},{"distance":12.499402046203613,"index":30454}]}
+
+
+bash 05 EC2
+
+curl -X POST -H "Content-Type: application/json" -d @loadtest/query.json     http://3.234.221.114:8080/search
+{"instance_id":"861c33bb769c","query_time_ms":66.318,"results":[{"distance":12.001459121704102,"index":35859},{"distance":12.059946060180664,"index":24682},{"distance":12.487079620361328,"index":35397},{"distance":12.489519119262695,"index":20160},{"distance":12.499402046203613,"index":30454}]}
